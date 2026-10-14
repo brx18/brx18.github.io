@@ -4,324 +4,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Runxue Bao's personal webpage, featuring research, publications, and contact information.">
-    <title>Runxue Bao</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="main.css" rel="stylesheet">
+    <title>Runxue Bao | Machine Learning Engineer @ Google</title>
+    <meta name="description" content="Runxue Bao is a Machine Learning Engineer at Google Search working on recommender systems and LLMs, with 30+ papers at leading venues including NeurIPS, ICML, CVPR, EMNLP and NAACL.">
+    <meta name="author" content="Runxue Bao">
+
+    <!-- Open Graph / link previews -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Runxue Bao | Machine Learning Engineer @ Google">
+    <meta property="og:description" content="Recommender Systems · LLM & Agents · Efficient ML">
+    <meta property="og:url" content="https://brx18.github.io/">
+    <meta property="og:image" content="https://brx18.github.io/images/profile.jpg">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
     <style>
+        :root {
+            --bg: #ffffff;
+            --bg-soft: #f6f8fb;
+            --text: #1f2328;
+            --muted: #59636e;
+            --border: #e4e8ee;
+            --accent: #1a73e8;
+            --accent-soft: #e8f0fe;
+            --gold: #b8860b;
+            --gold-soft: #fff6dc;
+            --max: 900px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1115;
+                --bg-soft: #171a21;
+                --text: #e6e8eb;
+                --muted: #9aa4b2;
+                --border: #262b35;
+                --accent: #8ab4f8;
+                --accent-soft: #1c2a44;
+                --gold: #f2c94c;
+                --gold-soft: #2e2716;
+            }
+            .logo, .pub-thumb img { background: #fff; }
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
         body {
-            font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        p {
-            line-height: 1.6;
-        }
-
-        a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        h2 {
-            color: #2980b9;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-section img {
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-
-        .contact-info {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             font-size: 16px;
-            color: #555;
+            line-height: 1.65;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
         }
 
-        .contact-info a {
-            color: #e74c3c;
-            font-weight: 500;
-        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-        ul {
-            margin: 0;
-            padding-left: 20px;
-        }
+        .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
-        li {
-            margin-bottom: 10px;
+        /* ---------- Nav ---------- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: color-mix(in srgb, var(--bg) 85%, transparent);
+            backdrop-filter: saturate(180%) blur(10px);
+            border-bottom: 1px solid var(--border);
         }
+        nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+        nav .brand { font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 1.15rem; color: var(--text); }
+        nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+        nav ul a { color: var(--muted); font-size: 0.92rem; font-weight: 500; }
+        nav ul a:hover { color: var(--accent); text-decoration: none; }
 
-        ul > li > ul {
-            margin-top: 15px;
+        /* ---------- Hero ---------- */
+        .hero { display: flex; gap: 36px; align-items: center; padding: 56px 0 28px; }
+        .hero img.avatar {
+            width: 168px; height: 168px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+            border: 4px solid var(--bg); box-shadow: 0 0 0 1px var(--border), 0 8px 24px rgba(0, 0, 0, .08);
         }
+        .hero h1 {
+            font-family: 'Source Serif 4', Georgia, serif; font-size: 2.6rem; line-height: 1.15;
+            margin: 0 0 6px; letter-spacing: -0.01em;
+        }
+        .hero .role { font-size: 1.12rem; font-weight: 500; margin: 0; }
+        .hero .role a { font-weight: 600; }
+        .hero .focus { color: var(--muted); margin: 4px 0 16px; }
+        .social { display: flex; flex-wrap: wrap; gap: 8px; }
+        .social a {
+            display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px;
+            border: 1px solid var(--border); border-radius: 999px; color: var(--text);
+            font-size: 0.88rem; font-weight: 500; transition: all .15s;
+        }
+        .social a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+        .social i { font-size: 1rem; }
+
+
+        /* ---------- Sections ---------- */
+        section { padding: 36px 0 8px; }
+        h2 {
+            font-size: 1.45rem; font-weight: 700; margin: 0 0 18px; letter-spacing: -0.01em;
+            display: flex; align-items: center; gap: 10px;
+        }
+        h2::before { content: ""; width: 4px; height: 1.1em; border-radius: 2px; background: var(--accent); }
+        h3 { font-size: 1rem; font-weight: 600; margin: 22px 0 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+        .bio p { margin: 0 0 12px; }
+
+        /* Research areas */
+        .areas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 18px; }
+        .area { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; background: var(--bg-soft); }
+        .area .t { font-weight: 600; display: flex; align-items: center; gap: 9px; }
+        .area .t i { color: var(--accent); width: 18px; text-align: center; }
+        .area .d { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+
+        /* Experience timeline */
+        .tl { list-style: none; margin: 0; padding: 0; }
+        .tl li { display: flex; gap: 16px; align-items: flex-start; padding: 12px 0; border-bottom: 1px dashed var(--border); }
+        .tl li:last-child { border-bottom: none; }
+        .logo {
+            width: 52px; height: 52px; border-radius: 10px; border: 1px solid var(--border);
+            padding: 7px; object-fit: contain; flex-shrink: 0; background: #fff;
+        }
+        .tl .body { flex: 1; min-width: 0; }
+        .tl .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        .tl .org { font-weight: 600; }
+        .tl .when { color: var(--muted); font-size: 0.88rem; white-space: nowrap; }
+        .tl .pos { font-size: 0.95rem; }
+        .tl .desc { color: var(--muted); font-size: 0.88rem; margin-top: 2px; }
+
+        /* News */
+        .news { list-style: none; margin: 0; padding: 0; }
+        .news li { display: flex; gap: 14px; padding: 6px 0; }
+        .news .date {
+            flex-shrink: 0; width: 64px; font-variant-numeric: tabular-nums; color: var(--muted);
+            font-size: 0.88rem; padding-top: 2px;
+        }
+        .news b { font-weight: 600; }
+        details summary { cursor: pointer; color: var(--accent); font-weight: 500; font-size: 0.92rem; margin: 6px 0 4px; list-style: none; }
+        details summary::-webkit-details-marker { display: none; }
+        details summary::before { content: "▸ "; }
+        details[open] summary::before { content: "▾ "; }
+
+        /* Publications */
+        .pub-note { color: var(--muted); font-size: 0.88rem; margin: -8px 0 14px; }
+        .pubs { list-style: none; margin: 0; padding: 0; }
+        .pub { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .pub:last-child { border-bottom: none; }
+        .pub-thumb {
+            width: 190px; height: 112px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 10px;
+            overflow: hidden; display: flex; align-items: center; justify-content: center; background: #fff;
+        }
+        .pub-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+        .pub-thumb.ph {
+            background: linear-gradient(135deg, var(--accent-soft), var(--bg-soft));
+            color: var(--accent); font-weight: 700; font-size: 1.05rem; text-align: center; line-height: 1.25;
+        }
+        .pub-body { flex: 1; min-width: 0; }
+        .pub-title { font-weight: 600; line-height: 1.4; }
+        .pub-authors { color: var(--muted); font-size: 0.9rem; margin-top: 3px; }
+        .pub-authors b { color: var(--text); font-weight: 600; }
+        .pub-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+        .venue {
+            font-size: 0.78rem; font-weight: 600; padding: 2px 9px; border-radius: 6px;
+            background: var(--accent-soft); color: var(--accent);
+        }
+        .award {
+            font-size: 0.78rem; font-weight: 600; padding: 2px 9px; border-radius: 6px;
+            background: var(--gold-soft); color: var(--gold);
+        }
+        .btn {
+            font-size: 0.78rem; font-weight: 500; padding: 1px 9px; border-radius: 6px;
+            border: 1px solid var(--border); color: var(--muted);
+        }
+        .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+        /* Service */
+        .svc { margin: 0; padding: 0; list-style: none; }
+        .svc li { padding: 5px 0; }
+        .svc .k { font-weight: 600; }
 
         footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #34495e;
-            color: #ecf0f1;
-            border-radius: 0 0 8px 8px;
+            margin-top: 48px; padding: 24px 0 36px; border-top: 1px solid var(--border);
+            color: var(--muted); font-size: 0.85rem; text-align: center;
         }
 
-        footer a {
-            color: #ecf0f1;
-            text-decoration: underline;
+        /* ---------- Responsive ---------- */
+        @media (max-width: 720px) {
+            nav ul { display: none; }
+            .hero { flex-direction: column; text-align: center; padding-top: 36px; gap: 20px; }
+            .hero h1 { font-size: 2.1rem; }
+            .social { justify-content: center; }
+            .areas { grid-template-columns: 1fr; }
+            .pub { flex-direction: column; gap: 10px; }
+            .pub-thumb { width: 100%; height: 170px; }
         }
     </style>
 </head>
 
 <body>
-    <header class="container">
-        <div class="profile-section">
-            <img src="runxue.jpg" width="140" alt="Runxue Bao profile picture">
+    <nav>
+        <div class="wrap">
+            <a class="brand" href="#">Runxue Bao</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#service">Service</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="wrap">
+        <!-- ================= Hero ================= -->
+        <header class="hero">
+            <img class="avatar" src="images/profile.jpg" alt="Runxue Bao">
             <div>
                 <h1>Runxue Bao</h1>
-                <p class="contact-info">
-                    <a href="https://scholar.google.com/citations?hl=en&user=jlcUOeoAAAAJ">Google Scholar</a> &nbsp; | &nbsp;
-                    <a href="https://www.linkedin.com/in/rbao/">LinkedIn</a><br>
-                    Email: baorunxue[at]gmail[dot]com
-                </p>
+                <p class="role">Machine Learning Engineer @ <a href="https://about.google/">Google</a> Search</p>
+                <p class="focus">Recommender Systems · LLM &amp; Agents · Efficient ML</p>
+                <div class="social">
+                    <a href="mailto:baorunxue@gmail.com"><i class="fa-solid fa-envelope"></i>Email</a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=jlcUOeoAAAAJ"><i class="ai ai-google-scholar"></i>Google Scholar</a>
+                    <a href="https://www.linkedin.com/in/rbao/"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="container">
-        <p>
-            I am a Machine Learning Engineer at <a href="https://about.google/">Google</a> Search, where I work on personalized recommendation and AIGC quality for Search Discover and Notification, serving billions of users.
-            I received my Ph.D. in Computer Engineering from the 
-            <a href="https://www.pitt.edu/">University of Pittsburgh</a> and completed my Honours B.S. in Electrical Engineering at the 
-            <a href="https://en.ustc.edu.cn/">University of Science and Technology of China</a>.
-        </p>
 
-        <p>Current interests & recent work include:</p>
-        <ul>
-            <li>Recommender Systems, Personalization, Retrieval and Ranking, Information Retrieval, GNN <span style="color: #1a0dab;">[NAACL 2024, MICCAI 2024]</span></li>
-            <li>Multi-Agent Collaboration, LLM-as-a-Judge/Rater, Parameter-Efficient Fine-Tuning (PEFT), and Retrieval-Augmented Generation (RAG) <span style="color: #1a0dab;">[NeurIPS 2025 & 2026, EMNLP 2024 & 2025 & 2026, NAACL 2024 & 2025]</span></li>
-            <li>Transfer Learning in Healthcare <span style="color: #1a0dab;">[ICHI 2023 & 2024, ISBI 2024, SDM 2025, AMIA 2025]</span></li>
-            <li>Model Compression and Optimization <span style="color: #1a0dab;">[EMNLP 2025, NAACL 2024, CVPR 2024, ICML 2020, IJCAI 2022, CIKM 2022]</span></li>
-        </ul>
+        <!-- ================= About ================= -->
+        <section id="about" class="bio">
+            <h2>About</h2>
+            <p>
+                I am a Machine Learning Engineer at <a href="https://about.google/">Google</a> Search, where I work on
+                personalized recommendation and AIGC quality for Search Discover and Notification, serving billions of users.
+            </p>
+            <p>
+                I received my Ph.D. in Computer Engineering from the <a href="https://www.pitt.edu/">University of Pittsburgh</a>
+                and my Honours B.S. in Electrical Engineering from the
+                <a href="https://en.ustc.edu.cn/">University of Science and Technology of China (USTC)</a>.
+                I have published <b>30+ papers</b> at leading venues, including NeurIPS (×2), EMNLP (×4), NAACL (×2), ICML and CVPR,
+                with <b>600+ citations</b> and an <b>IEEE ICHI 2024 Best Paper Award</b> 🏆.
+            </p>
 
-        <p><i>I’m open to collaboration opportunities—feel free to connect!</i></p>
+            <div class="areas">
+                <div class="area">
+                    <div class="t"><i class="fa-solid fa-diagram-project"></i>Recommender Systems &amp; Personalization</div>
+                    <div class="d">Retrieval and ranking, information retrieval, graph neural networks.</div>
+                </div>
+                <div class="area">
+                    <div class="t"><i class="fa-solid fa-scale-balanced"></i>LLM Evaluation &amp; Multi-Agent Systems</div>
+                    <div class="d">Multi-LLM collaboration for test-time scaling, LLM-as-a-Judge debiasing, RAG.</div>
+                </div>
+                <div class="area">
+                    <div class="t"><i class="fa-solid fa-bolt"></i>Efficient &amp; Trustworthy LLMs</div>
+                    <div class="d">Memorization control, pruning, parameter-efficient fine-tuning, sparse optimization.</div>
+                </div>
+                <div class="area">
+                    <div class="t"><i class="fa-solid fa-heart-pulse"></i>Transfer Learning for Healthcare</div>
+                    <div class="d">Heterogeneous, online and multi-source transfer learning for clinical prediction.</div>
+                </div>
+            </div>
 
-        <h2>News</h2>
-        <ul>
-            <li>[09/26] One paper on <span style="color: #1a0dab;">Multi-Agent Collaboration</span> was accepted by <strong>NeurIPS 2026</strong>!</li>
-            <li>[08/26] One paper on <span style="color: #1a0dab;">LLM Memorization</span> was accepted by <strong>EMNLP 2026 Main Conference</strong>!</li>
-            <li>[07/26] One survey paper on <span style="color: #1a0dab;">Heterogeneous Transfer Learning</span> was accepted by <strong>Knowledge-Based Systems</strong>!</li>
-            <li>[09/25] One paper on <span style="color: #1a0dab;">LLM-as-a-Judge</span> was accepted by <strong>NeurIPS 2025</strong>!</li>
-            <li>[08/25] One paper on <span style="color: #1a0dab;">LLM Memorization & Pruning</span> was accepted by <strong>EMNLP 2025 Main Conference</strong>!</li>
-            <li>[05/25] One paper on <span style="color: #1a0dab;">Sparse Optimization</span> was accepted by <strong>ECML PKDD 2025</strong>!</li>
-            <li>[03/25] One paper on <span style="color: #1a0dab;">Sparse Optimization</span> was accepted by <strong>IJCNN 2025</strong>!</li>
-            <li>[01/25] One paper on <span style="color: #1a0dab;">Retrieval-Augmented In-Context Learning</span> was accepted by <strong>NAACL 2025 Main Conference</strong>!</li>
-            <li>[12/24] One paper on <span style="color: #1a0dab;">Temporal Domain Adaptation</span> was accepted by <strong>SDM 2025</strong>!</li>
-            <li>[11/24] One paper on <span style="color: #1a0dab;">LLMs & Transfer Learning</span> was accepted by <strong>AMIA 2025 Informatics Summit</strong>!</li>
-            <li>[09/24] Two papers on <span style="color: #1a0dab;">LLMs</span> were accepted by <strong>EMNLP 2024</strong>! One focuses on <span style="color: #1a0dab;">Estimating LLM Memorization</span> and the other explores <span style="color: #1a0dab;">Enhancing LLMs with Knowledge Graphs</span>!</li>
-            <li>[06/24] One paper on <span style="color: #1a0dab;">Online Transfer Learning</span> received <strong>ICHI 2024 Best Paper Award (Analytics Track)</strong>!</li>
-            <li>[05/24] One paper on <span style="color: #1a0dab;">Graph Neural Network</span> was accepted by <strong>MICCAI 2024</strong>!</li>
-            <li>[03/24] One paper on <span style="color: #1a0dab;">LLM Pruning</span> was accepted by <strong>NAACL 2024</strong>!</li>
-            <li>[03/24] One paper on <span style="color: #1a0dab;">Online Transfer Learning</span> was accepted by <strong>IEEE ICHI 2024</strong>!</li>
-            <li>[02/24] One paper on <span style="color: #1a0dab;">Model Compression</span> was accepted by <strong>CVPR 2024</strong>!</li>
-            <li>[01/24] Two papers on <span style="color: #1a0dab;">Transfer Learning</span> and <span style="color: #1a0dab;">Multimodal Learning</span> were accepted by <strong>ISBI 2024</strong>!</li>
-            <li>[10/23] One survey paper on <span style="color: #1a0dab;">Heterogeneous Transfer Learning</span> was on arXiv!</li>
-            <li>[08/23] One paper on <span style="color: #1a0dab;">Online Pairwise Learning</span> was accepted by <strong>IEEE TNNLS 2023</strong>!</li>
-        </ul>
+            <p style="margin-top:18px; color:var(--muted); font-size:.92rem;">
+                <i class="fa-regular fa-handshake"></i>&nbsp; Open to research collaborations, feel free to reach out.
+            </p>
+        </section>
 
-        <h2>Selected Publications</h2>
-        <ul>
-            <li>
-                <b>Generalizing Test-Time Compute-Optimal Scaling as an Optimizable Graph</b>
-                <br>Fali Wang, Jihai Chen, Shuhua Yang, <b>Runxue Bao</b>, Tianxiang Zhao, Zhiwei Zhang, Xianfeng Tang, Hui Liu, Qi He, Suhang Wang.<br>
-                <i><span style="color: #1a0dab;">NeurIPS 2026</span></i>
-            </li>
-              <li>
-                <b>Enabling Confidence-Aware Control of Effective Memorization in Large Language Models</b>
-                <br>Chenjie Ni, Omid Mersa, Zhepeng Wang, <b>Runxue Bao</b>, Qun Li, Shangqian Gao, Yanfu Zhang.<br>
-                <i><span style="color: #1a0dab;">EMNLP 2026 - Main</span></i>
-            </li>
-            <li>
-                <b>Any Large Language Model Can Be a Reliable Judge: Debiasing with a Reasoning-based Bias Detector</b>
-                <br>Haoyan Yang, <b>Runxue Bao</b>, Cao Xiao, Jun Ma, Parminder Bhatia, Shangqian Gao, Taha Kass-Hout.<br>
-                <i><span style="color: #1a0dab;">NeurIPS 2025</span></i>
-            </li>
-             <li>
-                <b>Controllable Memorization in LLMs via Weight Pruning</b>
-                <br>Chenjie Ni, Zhepeng Wang, <b>Runxue Bao</b>, Shangqian Gao, Yanfu Zhang.<br>
-                <i><span style="color: #1a0dab;">EMNLP 2025 - Main</span></i>
-            </li>
-            <li>
-                <b>Dynamic Uncertainty Ranking: Enhancing In-Context Learning for Long-Tail Knowledge in LLMs</b>
-                <a href="https://arxiv.org/pdf/2410.23605">[Paper]</a>
-                <br>Shuyang Yu, <b>Runxue Bao</b>, Parminder Bhatia, Taha Kass-Hout, Jiayu Zhou, Cao Xiao.<br>
-                <i><span style="color: #1a0dab;">NAACL 2025 - Main</span></i>
-            </li>
-            <li>
-                <b>Domain-Adaptive Continual Meta-Learning for Modeling Dynamical Systems: An Application in Environmental Ecosystems</b><br>
-                Yiming Sun, Runlong Yu, <b>Runxue Bao</b>, Yiqun Xie, Ye Ye and Xiaowei Jia.<br>
-                <i><span style="color: #1a0dab;">SDM 2025</span></i>
-            </li>
-            <li>
-                <b>Unlocking Memorization in Large Language Models with Dynamic Soft Prompting</b>
-                <a href="https://arxiv.org/pdf/2409.13853">[Paper]</a>
-                <br>Zhepeng Wang, <b>Runxue Bao</b>, Yawen Wu, Jackson Taylor, Cao Xiao, Feng Zheng, Weiwen Jiang, Shangqian Gao, Yanfu Zhang.<br>
-                <i><span style="color: #1a0dab;">EMNLP 2024 - Main</span></i>
-            </li>
-            <li>
-                <b>InfuserKI: Enhancing Large Language Models with Knowledge Graphs via Infuser-Guided Knowledge Integration</b>
-                <a href="https://arxiv.org/abs/2402.11441">[Paper]</a><br>
-                Fali Wang, <b>Runxue Bao</b>, Suhang Wang, Wenchao Yu, Yanchi Liu, Wei Cheng, Haifeng Chen.<br>
-                <i><span style="color: #1a0dab;">EMNLP 2024 Findings</span></i>
-            </li>
-             <li>
-                <b>Self-guided Knowledge-injected Graph Neural Network for Alzheimer’s Diseases</b>
-                <a href="https://link.springer.com/chapter/10.1007/978-3-031-72069-7_36">[Paper]</a>
-                <br>Zhepeng Wang, <b>Runxue Bao</b>, Yawen Wu, Guodong Liu, Lei Yang, Liang Zhan, Feng Zheng, Weiwen Jiang, Yanfu Zhang.<br>
-                <i><span style="color: #1a0dab;">MICCAI 2024</span></i>
-            </li>
-            <li>
-                <b>Pruning as a Domain-specific LLM Extractor</b>
-                <a href="https://aclanthology.org/2024.findings-naacl.91.pdf">[Paper]</a><br>
-                Nan Zhang, Yanchi Liu, Xujiang Zhao, Wei Cheng, <b>Runxue Bao</b>, Rui Zhang, Prasenjit Mitra, Haifeng Chen.<br>
-                <i><span style="color: #1a0dab;">NAACL 2024 Findings</span></i>
-            </li>
-            <li>
-                <b>Auto-Train-Once: Controller Network Guided Automatic Network Pruning from Scratch</b>
-                <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wu_Auto-Train-Once_Controller_Network_Guided_Automatic_Network_Pruning_from_Scratch_CVPR_2024_paper.pdf">[Paper]</a><br>
-               Xidong Wu, Shangqian Gao, Zeyu Zhang, Zhenzhen Li, <b>Runxue Bao</b>, Yanfu Zhang, Xiaoqian Wang, Heng Huang.<br>
-                <i><span style="color: #1a0dab;">CVPR 2024</span></i>
-            </li>
-            <li>
-                <b>Neurodegenerative Disease Prediction via Transferable Deep Networks</b>
-                <a href="https://ieeexplore.ieee.org/abstract/document/10635409">[Paper]</a><br>
-               Yanfu Zhang, Guodong Liu, <b>Runxue Bao</b>, Liang Zhan, Paul Thompson, Heng Huang.<br>
-                <i><span style="color: #1a0dab;">ISBI 2024</span></i>
-            </li>
-             <li>
-                <b>Brain Image Synthesis Using Incomplete Multimodal Data</b>
-                <a href="https://ieeexplore.ieee.org/abstract/document/10635569">[Paper]</a><br>
-               Yanfu Zhang, Guodong Liu, <b>Runxue Bao</b>, Liang Zhan, Paul Thompson, Heng Huang.<br>
-                <i><span style="color: #1a0dab;">ISBI 2024</span></i>
-            </li>
-            <li>
-                <b>Online Transfer Learning for RSV Case Detection</b>
-                <a href="https://ieeexplore.ieee.org/abstract/document/10628562">[Paper]</a><br>
-                Yiming Sun, Yuhe Gao, <b>Runxue Bao</b>, Gregory F Cooper, Jessi Espino, Harry Hochheiser, Marian G Michaels, John M Aronis, Ye Ye.<br>
-                <i><span style="color: #1a0dab;">ICHI 2024 (Best Paper Award)</span></i>
-            </li>
-            <li>
-                <b>A Survey of Heterogeneous Transfer Learning</b> 
-                <a href="https://arxiv.org/abs/2310.08459">[Paper]</a><br>
-                <b>Runxue Bao*</b>, Yiming Sun*, Yuhe Gao, Jindong Wang, Qiang Yang, Haifeng Chen, Zhi-Hong Mao, Ye Ye.<br>
-                <i><span style="color: #1a0dab;">arXiv 2023</span></i> 
-            </li>
-            <li>
-                <b>New Scalable and Efficient Online Pairwise Learning Algorithm</b>
-                <a href="https://ieeexplore.ieee.org/abstract/document/10237116/">[Paper]</a>
-                <br>Bin Gu, <b>Runxue Bao</b>, Chenkang Zhang, Heng Huang.<br>
-                <i><span style="color: #1a0dab;">IEEE Transactions on Neural Networks and Learning Systems (TNNLS 2023)</span></i> 
-            </li>
-            <li>
-                <b>Prediction of COVID-19 Patients’ Emergency Room Revisit using Multi-Source Transfer Learning</b>
-                <a href="https://arxiv.org/abs/2306.17257">[Paper]</a><br>
-                Yuelyu Ji*, Yuhe Gao*, <b>Runxue Bao*</b>, Qi Li, Disheng Liu, Yiming Sun, and Ye Ye. (* denotes equal contribution)<br>
-                <i><span style="color: #1a0dab;">ICHI 2023</span></i> 
-            </li>
-            <li>
-                <b>An Accelerated Doubly Stochastic Gradient Method with Faster Explicit Model Identification</b>
-                <a href="https://dl.acm.org/doi/abs/10.1145/3511808.3557234">[Paper]</a>
-                <a href ='./ADSGD_CIKM2022_slides.pdf'>[Slides]</a><br>
-                <b>Runxue Bao</b>, Bin Gu, Heng Huang.<br>
-                <i><span style="color: #1a0dab;">CIKM 2022</span></i> 
-            </li>
-            <li>
-                <b>Doubly Sparse Asynchronous Learning for Stochastic Composite Optimization</b>
-                <a href="https://www.ijcai.org/proceedings/2022/0266.pdf">[Paper]</a>
-                <a href ='./DSAL_IJCAI2022_slides.pdf'>[Slides]</a><br>
-                <b>Runxue Bao</b>, Xidong Wu, Wenhan Xian, Heng Huang.<br>
-                <i><span style="color: #1a0dab;">IJCAI 2022</span></i>
-            </li>
-            <li>
-                <b>Toward Unified Data and Algorithm Fairness via Adversarial Data Augmentation and Adaptive Model Fine-tuning</b>
-                <a href="https://ieeexplore.ieee.org/document/10027601">[Paper]</a><br>
-                Yanfu Zhang, <b>Runxue Bao</b>, Jian Pei, Heng Huang.<br>
-                <i><span style="color: #1a0dab;">ICDM 2022</span></i> 
-            </li>
-            <li>
-                <b>Fast OSCAR and OWL Regression via Safe Screening Rules</b>
-                <a href="http://proceedings.mlr.press/v119/bao20b.html">[Paper]</a>
-                <a href="https://github.com/brx18/Fast-OSCAR-and-OWL-Regression-via-Safe-Screening-Rules">[Code]</a>
-                <a href="https://icml.cc/media/Slides/icml/2020/virtual(no-parent)-14-16-00UTC-5874-fast_oscar_and.pdf">[Slides]</a><br>
-                <b>Runxue Bao</b>, Bin Gu, Heng Huang.<br>
-                <i><span style="color: #1a0dab;">ICML 2020</span></i>
-            </li>
-        </ul>
+        <!-- ================= Experience ================= -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <ul class="tl">
+                <li>
+                    <img class="logo" src="images/logos/google.svg" alt="Google">
+                    <div class="body">
+                        <div class="row"><span class="org">Google</span><span class="when">2025 – Present</span></div>
+                        <div class="pos">Machine Learning Engineer, Search</div>
+                        <div class="desc">Personalized recommendation and AIGC quality for Search Discover &amp; Notifications.</div>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
-        
-        <h2>Services</h2>
-        <ul>
-            <li> <b>Conference Program Committee or Reviewer</b>:
-                <ul>
-                    <li>2025: ICLR, AAAI, AISTATS, WACV</li>
-                    <li>2024: ICML, ICLR, NeurIPS, NeurIPS Datasets and Benchmarks Track, CVPR, ACL ARR, ECCV, AAAI, IJCAI, WACV, WSDM (PC), SDM, IEEE CAI, AutoML, LOG</li>
-                    <li>2023: ICLR, ICML, NeurIPS, NeurIPS Datasets and Benchmarks Track, KDD (PC), IJCAI (PC), ECAI, WACV, AMIA, IEEE CEC, FUZZ-IEEE, AutoML, LOG</li>
-                    <li>2022: ICML, NeurIPS, NeurIPS Datasets and Benchmarks Track, ICLR, AISTATS, IEEE WCCI, LOG</li>
-                    <li>2021: ICML, NeurIPS</li>
-                    <li>2020: KDD (PC), MLSP</li>
-                    <li>2019: MLSP</li>
+        <!-- ================= News ================= -->
+        <section id="news">
+            <h2>News</h2>
+            <ul class="news">
+                <li><span class="date">2026.09</span><span>Paper on multi-LLM collaboration for test-time scaling accepted to <b>NeurIPS 2026</b>.</span></li>
+                <li><span class="date">2026.08</span><span>Paper on confidence-aware memorization control accepted to <b>EMNLP 2026</b> (Main).</span></li>
+                <li><span class="date">2026.07</span><span>Survey on heterogeneous transfer learning accepted to <b>Knowledge-Based Systems</b>.</span></li>
+                <li><span class="date">2025.09</span><span>Paper on LLM-as-a-Judge debiasing accepted to <b>NeurIPS 2025</b>.</span></li>
+                <li><span class="date">2025.08</span><span>Paper on controllable LLM memorization via pruning accepted to <b>EMNLP 2025</b> (Main).</span></li>
+                <li><span class="date">2025.05</span><span>Paper on sparse optimization accepted to <b>ECML PKDD 2025</b>.</span></li>
+                <li><span class="date">2025.01</span><span>Paper on retrieval-augmented in-context learning accepted to <b>NAACL 2025</b> (Main).</span></li>
+            </ul>
+            <details>
+                <summary>Show older news</summary>
+                <ul class="news">
+                    <li><span class="date">2025.03</span><span>Paper on sparse optimization accepted to <b>IJCNN 2025</b>.</span></li>
+                    <li><span class="date">2024.12</span><span>Paper on temporal domain adaptation accepted to <b>SDM 2025</b>.</span></li>
+                    <li><span class="date">2024.11</span><span>Paper on LLMs &amp; transfer learning accepted to <b>AMIA 2025 Informatics Summit</b>.</span></li>
+                    <li><span class="date">2024.09</span><span>Two papers on LLM memorization and knowledge-graph-enhanced LLMs accepted to <b>EMNLP 2024</b>.</span></li>
+                    <li><span class="date">2024.06</span><span>🏆 Paper on online transfer learning received the <b>ICHI 2024 Best Paper Award</b> (Analytics Track).</span></li>
+                    <li><span class="date">2024.05</span><span>Paper on graph neural networks accepted to <b>MICCAI 2024</b>.</span></li>
+                    <li><span class="date">2024.03</span><span>Papers on LLM pruning and online transfer learning accepted to <b>NAACL 2024</b> and <b>IEEE ICHI 2024</b>.</span></li>
+                    <li><span class="date">2024.02</span><span>Paper on model compression accepted to <b>CVPR 2024</b>.</span></li>
+                    <li><span class="date">2024.01</span><span>Two papers on transfer learning and multimodal learning accepted to <b>ISBI 2024</b>.</span></li>
+                    <li><span class="date">2023.08</span><span>Paper on online pairwise learning accepted to <b>IEEE TNNLS</b>.</span></li>
                 </ul>
-            </li>
-            <li> <b>Journal Reviewer</b>:
-                <ul>
-                    <li>Briefings in Bioinformatics</li>
-                    <li>Artificial Intelligence in Medicine</li>
-                    <li>IEEE Transactions on Big Data</li>
-                    <li>Patterns</li>
-                    <li>Knowledge and Information Systems (KAIS)</li>
-                    <li>Journal of Combinatorial Optimization</li>
-                    <li>IEEE Open Journal of the Computer Society (OJCS)</li>
-                </ul>
-            </li>
-        </ul>
+            </details>
+        </section>
+
+        <!-- ================= Publications ================= -->
+        <section id="publications">
+            <h2>Selected Publications</h2>
+            <p class="pub-note">* equal contribution. Full list on <a href="https://scholar.google.com/citations?hl=en&user=jlcUOeoAAAAJ">Google Scholar</a>.</p>
+            <ul class="pubs">
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/tts_graph.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">Generalizing Test-Time Compute-Optimal Scaling as an Optimizable Graph</div>
+                        <div class="pub-authors">Fali Wang, Jihai Chen, Shuhua Yang, <b>Runxue Bao</b>, Tianxiang Zhao, Zhiwei Zhang, Xianfeng Tang, Hui Liu, Qi He, Suhang Wang</div>
+                        <div class="pub-meta"><span class="venue">NeurIPS 2026</span><a class="btn" href="https://arxiv.org/abs/2511.00086">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb ph">EMNLP<br>2026</div>
+                    <div class="pub-body">
+                        <div class="pub-title">Enabling Confidence-Aware Control of Effective Memorization in Large Language Models</div>
+                        <div class="pub-authors">Chenjie Ni, Omid Mersa, Zhepeng Wang, <b>Runxue Bao</b>, Qun Li, Shangqian Gao, Yanfu Zhang</div>
+                        <div class="pub-meta"><span class="venue">EMNLP 2026 Main</span><a class="btn" href="https://openreview.net/pdf?id=5IvSNZyRl8">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/htl_survey.jpg" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">A Recent Survey of Heterogeneous Transfer Learning</div>
+                        <div class="pub-authors"><b>Runxue Bao*</b>, Yiming Sun*, Yuhe Gao, Jiabao Li, Ran Fang, Jindong Wang, Qiang Yang, Zhi-Hong Mao, Chenxi Song, Ai Ren, Ye Ye</div>
+                        <div class="pub-meta"><span class="venue">Knowledge-Based Systems 2026</span><a class="btn" href="https://doi.org/10.1016/j.knosys.2026.116577">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/rbd_judge.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">Any Large Language Model Can Be a Reliable Judge: Debiasing with a Reasoning-based Bias Detector</div>
+                        <div class="pub-authors">Haoyan Yang, <b>Runxue Bao</b>, Cao Xiao, Jun Ma, Parminder Bhatia, Shangqian Gao, Taha Kass-Hout</div>
+                        <div class="pub-meta"><span class="venue">NeurIPS 2025</span><a class="btn" href="https://arxiv.org/abs/2505.17100">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/mem_prune.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">Controllable Memorization in LLMs via Weight Pruning</div>
+                        <div class="pub-authors">Chenjie Ni, Zhepeng Wang, <b>Runxue Bao</b>, Shangqian Gao, Yanfu Zhang</div>
+                        <div class="pub-meta"><span class="venue">EMNLP 2025 Main</span><a class="btn" href="https://aclanthology.org/2025.emnlp-main.765/">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/dur_icl.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">Dynamic Uncertainty Ranking: Enhancing In-Context Learning for Long-Tail Knowledge in LLMs</div>
+                        <div class="pub-authors">Shuyang Yu, <b>Runxue Bao</b>, Parminder Bhatia, Taha Kass-Hout, Jiayu Zhou, Cao Xiao</div>
+                        <div class="pub-meta"><span class="venue">NAACL 2025 Main</span><a class="btn" href="https://arxiv.org/pdf/2410.23605">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/soft_prompt.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">Unlocking Memorization in Large Language Models with Dynamic Soft Prompting</div>
+                        <div class="pub-authors">Zhepeng Wang, <b>Runxue Bao</b>, Yawen Wu, Jackson Taylor, Cao Xiao, Feng Zheng, Weiwen Jiang, Shangqian Gao, Yanfu Zhang</div>
+                        <div class="pub-meta"><span class="venue">EMNLP 2024 Main</span><a class="btn" href="https://arxiv.org/pdf/2409.13853">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/infuserki.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">InfuserKI: Enhancing Large Language Models with Knowledge Graphs via Infuser-Guided Knowledge Integration</div>
+                        <div class="pub-authors">Fali Wang, <b>Runxue Bao</b>, Suhang Wang, Wenchao Yu, Yanchi Liu, Wei Cheng, Haifeng Chen</div>
+                        <div class="pub-meta"><span class="venue">EMNLP 2024 Findings</span><a class="btn" href="https://arxiv.org/abs/2402.11441">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/dpruner.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">Pruning as a Domain-specific LLM Extractor</div>
+                        <div class="pub-authors">Nan Zhang, Yanchi Liu, Xujiang Zhao, Wei Cheng, <b>Runxue Bao</b>, Rui Zhang, Prasenjit Mitra, Haifeng Chen</div>
+                        <div class="pub-meta"><span class="venue">NAACL 2024 Findings</span><a class="btn" href="https://aclanthology.org/2024.findings-naacl.91.pdf">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/ato_prune.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">Auto-Train-Once: Controller Network Guided Automatic Network Pruning from Scratch</div>
+                        <div class="pub-authors">Xidong Wu, Shangqian Gao, Zeyu Zhang, Zhenzhen Li, <b>Runxue Bao</b>, Yanfu Zhang, Xiaoqian Wang, Heng Huang</div>
+                        <div class="pub-meta"><span class="venue">CVPR 2024</span><a class="btn" href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wu_Auto-Train-Once_Controller_Network_Guided_Automatic_Network_Pruning_from_Scratch_CVPR_2024_paper.pdf">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb"><img src="images/pubs/rsv_otl.png" alt="" loading="lazy"></div>
+                    <div class="pub-body">
+                        <div class="pub-title">Online Transfer Learning for RSV Case Detection</div>
+                        <div class="pub-authors">Yiming Sun, Yuhe Gao, <b>Runxue Bao</b>, Gregory F Cooper, Jessi Espino, Harry Hochheiser, Marian G Michaels, John M Aronis, Ye Ye</div>
+                        <div class="pub-meta"><span class="venue">ICHI 2024</span><span class="award">🏆 Best Paper Award</span><a class="btn" href="https://ieeexplore.ieee.org/abstract/document/10628562">Paper</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb ph">CIKM<br>2022</div>
+                    <div class="pub-body">
+                        <div class="pub-title">An Accelerated Doubly Stochastic Gradient Method with Faster Explicit Model Identification</div>
+                        <div class="pub-authors"><b>Runxue Bao</b>, Bin Gu, Heng Huang</div>
+                        <div class="pub-meta"><span class="venue">CIKM 2022</span><a class="btn" href="https://dl.acm.org/doi/abs/10.1145/3511808.3557234">Paper</a><a class="btn" href="./ADSGD_CIKM2022_slides.pdf">Slides</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb ph">IJCAI<br>2022</div>
+                    <div class="pub-body">
+                        <div class="pub-title">Doubly Sparse Asynchronous Learning for Stochastic Composite Optimization</div>
+                        <div class="pub-authors"><b>Runxue Bao</b>, Xidong Wu, Wenhan Xian, Heng Huang</div>
+                        <div class="pub-meta"><span class="venue">IJCAI 2022</span><a class="btn" href="https://www.ijcai.org/proceedings/2022/0266.pdf">Paper</a><a class="btn" href="./DSAL_IJCAI2022_slides.pdf">Slides</a></div>
+                    </div>
+                </li>
+                <li class="pub">
+                    <div class="pub-thumb ph">ICML<br>2020</div>
+                    <div class="pub-body">
+                        <div class="pub-title">Fast OSCAR and OWL Regression via Safe Screening Rules</div>
+                        <div class="pub-authors"><b>Runxue Bao</b>, Bin Gu, Heng Huang</div>
+                        <div class="pub-meta"><span class="venue">ICML 2020</span><a class="btn" href="http://proceedings.mlr.press/v119/bao20b.html">Paper</a><a class="btn" href="https://github.com/brx18/Fast-OSCAR-and-OWL-Regression-via-Safe-Screening-Rules">Code</a><a class="btn" href="https://icml.cc/media/Slides/icml/2020/virtual(no-parent)-14-16-00UTC-5874-fast_oscar_and.pdf">Slides</a></div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ================= Service ================= -->
+        <section id="service">
+            <h2>Professional Service</h2>
+            <ul class="svc">
+                <li><span class="k">Conference Program Committee or Reviewer:</span> NeurIPS, ICML, ICLR, CVPR, ECCV, KDD, ACL ARR, AAAI, IJCAI, WSDM, AISTATS</li>
+                <li><span class="k">Journal Reviewer:</span> IEEE Transactions on Big Data, Patterns, Briefings in Bioinformatics, Artificial Intelligence in Medicine</li>
+            </ul>
+        </section>
     </main>
 
-    <footer class="container">
-        <div style="display:inline-block;width:250px;">
-            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5zwqaf01zjl&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
-        </div>
-        <div id="footer-text">
-            © 2025 Runxue Bao. All rights reserved.
-        </div>
+    <footer>
+        <div class="wrap">© 2026 Runxue Bao · Last updated October 2026</div>
     </footer>
 
     <script type="application/ld+json">
@@ -329,9 +465,15 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Runxue Bao",
+      "url": "https://brx18.github.io/",
+      "image": "https://brx18.github.io/images/profile.jpg",
       "jobTitle": "Machine Learning Engineer",
-      "affiliation": "Google",
-      "email": "baorunxue@gmail.com",
+      "worksFor": { "@type": "Organization", "name": "Google" },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "University of Pittsburgh" },
+        { "@type": "CollegeOrUniversity", "name": "University of Science and Technology of China" }
+      ],
+      "email": "mailto:baorunxue@gmail.com",
       "sameAs": [
         "https://scholar.google.com/citations?hl=en&user=jlcUOeoAAAAJ",
         "https://www.linkedin.com/in/rbao/"
